@@ -24,7 +24,7 @@ emergency = Emergency(Pin(10, Pin.IN, Pin.PULL_DOWN), Pin(8, Pin.IN, Pin.PULL_DO
 motor = Motor(Pin(13, Pin.OUT, Pin.PULL_DOWN))
 
 lcd = display.init_display()
-lcd.clear()
+
 
 
 def input_thread():
