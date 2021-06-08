@@ -42,7 +42,7 @@ class Emergency:
     def __init__(self, pin_button, pin_oil, pin_motor, pin_material):
         self.pin_button = pin_button
         self.pin_oil = pin_oil
-        self.pin_motor = pin_motor
+        # self.pin_motor = pin_motor  # thermal relay not used in E55
         self.pin_material = pin_material
         self.emergency_state = False
         self.emergency_number = None
@@ -53,9 +53,9 @@ class Emergency:
         if self.pin_oil.value() == 0:
             self.emergency_state = True
             self.emergency_number = 3
-        elif self.pin_motor.value() == 0:
-            self.emergency_state = True
-            self.emergency_number = 4
+        # elif self.pin_motor.value() == 0:  # thermal relay not used in E55
+        #     self.emergency_state = True
+        #     self.emergency_number = 4
         elif self.pin_button.value() == 0:
             self.emergency_state = True
             self.emergency_number = 5

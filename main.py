@@ -17,15 +17,12 @@ button_stop = Button(Pin(20, Pin.IN, Pin.PULL_DOWN))
 lim_sw_1 = LimitSwitch(Pin(21, Pin.IN, Pin.PULL_DOWN))
 lim_sw_2 = LimitSwitch(Pin(22, Pin.IN, Pin.PULL_DOWN))
 cylinder_1 = Cylinder(Pin(14, Pin.OUT, Pin.PULL_DOWN), Pin(12, Pin.OUT, Pin.PULL_DOWN))
-cylinder_2 = Cylinder(Pin(15, Pin.OUT, Pin.PULL_DOWN), Pin(11, Pin.OUT, Pin.PULL_DOWN))
+cylinder_2 = Pin(15, Pin.OUT, Pin.PULL_DOWN)  # 380 pin in machine
 pressure = LimitSwitch(Pin(6, Pin.IN, Pin.PULL_DOWN))
 emergency = Emergency(Pin(10, Pin.IN, Pin.PULL_DOWN), Pin(8, Pin.IN, Pin.PULL_DOWN),
                       Pin(9, Pin.IN, Pin.PULL_DOWN), Pin(7, Pin.IN, Pin.PULL_DOWN))
 motor = Motor(Pin(13, Pin.OUT, Pin.PULL_DOWN))
-
 lcd = display.init_display()
-
-
 
 def input_thread():
     while True:

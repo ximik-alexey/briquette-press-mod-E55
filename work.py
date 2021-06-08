@@ -148,10 +148,10 @@ class Work:
                 self._error_in_cycle(0)
                 return
             if self.limit_switch_1.state_pin:
+                if not cylinder_2_work_on:
+                    self.cylinder_2.on()
                 if cylinder_2_work_on:
-                    self.cylinder_2.open_cylinder()
-                else:
-                    self.cylinder_2.close_cylinder()
+                    self.cylinder_2.off()
                 self.cylinder_1.open_cylinder()
                 self._clear_timedelta()
                 self._start_timedelta()
@@ -159,9 +159,9 @@ class Work:
         if self.cylinder_1.state:
             if cylinder_2_work_on:
                 if self._get_timedelta() > (int(self.parametrs['third_cylinder_time_to_open'] * 1000)):
-                    self.cylinder_2.close_cylinder()
+                    self.cylinder_2.on()
                 elif self.pressure.state_pin:
-                    self.cylinder_2.close_cylinder()
+                    self.cylinder_2.on()
             if self.cylinder_1.cylinder_timeout(self.parametrs['second_limit_switch_time'], self._timedelta, utime):
                 self._error_in_cycle(1)
                 return
